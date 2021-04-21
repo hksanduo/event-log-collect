@@ -21,7 +21,7 @@ func main() {
 	app.Version = "V1.0"
 	app.Usage = "collect operation system event log"
 	app.Commands = []cli.Command{cmd.Scan}
-	// app.Flags = append(app.Flags, cmd.Init.Flags...)
+	app.Flags = append(app.Flags, cmd.Scan.Flags...)
 
 	app.Run(os.Args)
 }
