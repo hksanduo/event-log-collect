@@ -60,10 +60,10 @@ func intFlag(name string, value int, usage string) cli.IntFlag {
 */
 func ScanTask(ctx *cli.Context) (err error) {
 	color.Info.Println("测试")
-	timestramp := time.Now().Format("20200421")
+	timestramp := time.Now().Format("2006-01-02-15-04-05")
 	path := getfilepath(ctx.String("path"))
 	plugins.NetInterfaces(path, timestramp)
-	// plugins.NetConnections()
+	plugins.NetConnections(path, timestramp)
 	// color.Info.Println(ctx.String("outfile"))
 	// color.Info.Println(ctx.String("outfile"))
 	return err
