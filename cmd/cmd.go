@@ -6,7 +6,6 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/gookit/color"
 	"github.com/urfave/cli"
 )
 
@@ -18,7 +17,7 @@ var Scan = cli.Command{
 	Action:      ScanTask,
 	Flags: []cli.Flag{
 		// outfile参数，默认参数为test.json
-		stringFlag("path, p", "_out", "scan result path"),
+		stringFlag("path, p", "./_out", "scan result path"),
 		// boolFlag("scan, s", "scan"),
 		// intFlag("timeout, t", 5, "timeout"),
 		// intFlag("scan_num, n", 5000, "thread num"),
@@ -59,9 +58,11 @@ func intFlag(name string, value int, usage string) cli.IntFlag {
 新建扫描任务，目前想做成框架直接加载组件，但是受限于go框架，目前没什么好的想法。
 */
 func ScanTask(ctx *cli.Context) (err error) {
-	color.Info.Println("测试")
+	// color.Info.Println("测试")
 	timestramp := time.Now().Format("2006-01-02-15-04-05")
 	path := getfilepath(ctx.String("path"))
+	// go plugins.NetInterfaces(path, timestramp)
+	// go plugins.NetConnections(path, timestramp)
 	plugins.NetInterfaces(path, timestramp)
 	plugins.NetConnections(path, timestramp)
 	// color.Info.Println(ctx.String("outfile"))

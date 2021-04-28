@@ -10,10 +10,12 @@ import (
 )
 
 func init() {
+	// 最大效率地利用 CPU。
 	runtime.GOMAXPROCS(runtime.NumCPU())
 }
 
 func main() {
+	// app 配置
 	app := cli.NewApp()
 	app.Name = "event-log-collect"
 	app.Author = "hksanduo"
@@ -22,6 +24,5 @@ func main() {
 	app.Usage = "collect operation system event log"
 	app.Commands = []cli.Command{cmd.Scan}
 	app.Flags = append(app.Flags, cmd.Scan.Flags...)
-
 	app.Run(os.Args)
 }
